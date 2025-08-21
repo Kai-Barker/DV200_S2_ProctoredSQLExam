@@ -17,6 +17,20 @@ WHERE project_deliverable.status LIKE "In Progress"
 ---
 SELECT lab_id, researcher.* FROM `lab` INNER JOIN director ON director.director_id = lab.director_id INNER JOIN researcher ON researcher.researcher_id = director.researcher_id
 
+# Triggers
+
+---
+### 1 Add Researcher when inserting director
+---
+---
+### 1 Update researcher role to director
+---
+---
+### 1 Halt a project when removing funding
+---
+
+
+
 ### FIGMA BOARD LINK:
 https://www.figma.com/design/r2Lu3kfyRqLjlz89DqYoN7/Exam-ER-Diagram?node-id=0-1&t=HSYre67zvnnsY8Dj-1
 
