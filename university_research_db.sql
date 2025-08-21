@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2025 at 12:42 PM
+-- Generation Time: Aug 21, 2025 at 01:47 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -78,7 +78,7 @@ END
 $$
 DELIMITER ;
 DELIMITER $$
-CREATE TRIGGER `start_project_on_funding` AFTER INSERT ON `director` FOR EACH ROW BEGIN
+CREATE TRIGGER `promote_researcher_to_director` AFTER INSERT ON `director` FOR EACH ROW BEGIN
 	UPDATE researcher
     SET role = "director"
     WHERE researcher.researcher_id = NEW.researcher_id;
@@ -112,7 +112,7 @@ INSERT INTO `funding_sources` (`funding_source_id`, `project_id`, `organisation`
 (6, 3, 'Oracle', 'Travel'),
 (7, 4, 'Arsenal', 'Equipment'),
 (8, 4, 'Open Window', 'Travel'),
-(9, 5, 'Tsungai Org', 'Equipment'),
+(9, 5, 'Open Window', 'Equipment'),
 (10, 6, 'Tsungai Org', 'Equipment'),
 (11, 6, 'Google', 'Travel');
 
@@ -121,9 +121,12 @@ INSERT INTO `funding_sources` (`funding_source_id`, `project_id`, `organisation`
 --
 DELIMITER $$
 CREATE TRIGGER `halt_project` BEFORE DELETE ON `funding_sources` FOR EACH ROW BEGIN
+IF ((SELECT COUNT(*) FROM `funding_sources` WHERE project_id = OLD.project_id) <2)
+THEN
 	UPDATE project_deliverable
     SET project_deliverable.status = "pending"
     WHERE project_deliverable.project_id=OLD.project_id;
+    END IF;
 END
 $$
 DELIMITER ;
@@ -194,9 +197,9 @@ CREATE TABLE `project_deliverable` (
 INSERT INTO `project_deliverable` (`deliverable_id`, `project_id`, `due_date`, `status`) VALUES
 (1, 1, '2026-08-21', 'In Progress'),
 (2, 2, '2024-08-21', 'Canceled'),
-(3, 6, '2026-08-21', 'Pending'),
+(3, 6, '2026-08-21', 'In Progress'),
 (4, 3, '2025-08-22', 'Completed'),
-(5, 4, '2077-08-22', 'Pending'),
+(5, 4, '2077-08-22', 'In Progress'),
 (6, 5, '2025-08-21', 'In Progress'),
 (7, 2, '2026-08-21', 'In Progress');
 
@@ -319,7 +322,7 @@ ALTER TABLE `director`
 -- AUTO_INCREMENT for table `funding_sources`
 --
 ALTER TABLE `funding_sources`
-  MODIFY `funding_source_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `funding_source_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `lab`

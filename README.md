@@ -46,6 +46,9 @@ SELECT lab_id, researcher.* FROM `lab` INNER JOIN director ON director.director_
 ### FIGMA BOARD LINK:
 https://www.figma.com/design/r2Lu3kfyRqLjlz89DqYoN7/Exam-ER-Diagram?node-id=0-1&t=HSYre67zvnnsY8Dj-1
 
+### Google Drive Video Link
+https://drive.google.com/file/d/1jCcCtPIiRHlbsYwXSoTrRS3c2hrpWbLY/view?usp=sharing
+
 
 
 ## WRITTEN BY KAI BARKER 241065 AND DAVID GOLDING 200238
