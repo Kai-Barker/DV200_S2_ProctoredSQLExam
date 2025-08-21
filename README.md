@@ -4,7 +4,7 @@
 ---
 ### 1 ALL RESEARCHERS WHO HAVE WORKED ON A PROJECT
 ---
-SELECT researcher.* FROM `researcher` INNER JOIN project_researchers ON project_researchers.researcher_id = researcher.researcher_id INNER JOIN projects ON projects.project_id = project_researchers.project_id 
+SELECT researcher.* FROM `researcher` INNER JOIN project_researchers ON project_researchers.researcher_id = researcher.researcher_id INNER JOIN projects ON projects.project_id = project_researchers.project_id    
 
 ---
 ### 2 ALL PROJECTS WITH AN IN PROGRESS DELIVERABLE
@@ -18,3 +18,7 @@ WHERE project_deliverable.status LIKE "In Progress"
 SELECT lab_id, researcher.* FROM `lab` INNER JOIN director ON director.director_id = lab.director_id INNER JOIN researcher ON researcher.researcher_id = director.researcher_id
 
 ###
+
+
+
+## WRITTEN BY KAI BARKER 241065 AND DAVID GOLDING 200238
