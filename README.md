@@ -23,10 +23,22 @@ SELECT lab_id, researcher.* FROM `lab` INNER JOIN director ON director.director_
 ### 1 Add Researcher when inserting director
 ---
 ---
-### 1 Update researcher role to director
+### 2 Update researcher role to director
 ---
 ---
-### 1 Halt a project when removing funding
+### 3 Halt a project when removing funding
+---
+
+# Stored Procedures
+
+---
+### 1 Get A Deliverable By Its Status
+---
+---
+### 2 Get the Organisation's that fund a given project in a single string
+---
+---
+### 3 Get all researchers working on a project
 ---
 
 
